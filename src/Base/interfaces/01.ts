@@ -71,6 +71,21 @@
   };
  */
 
+/*
+  interface Person {
+    [propName: string]: string | number | undefined;
+    name: string;
+    age?: number;
+    // 定义了任意属性取string类型的值
+  }
+  let tom: Person = {
+    name: 'Tom',
+    age: 25,
+    gender: 'male'
+    // isSex: true
+  };
+ */
+
 /**
  * 只读属性
  */
