@@ -88,17 +88,67 @@
  * 4）any可以被断言为任何类型
  * 要使得A能够被断言为B，只需要A兼容B或B兼容A即可
  */
-interface Animal {
-  name: string;
-}
-interface Cat {
-  name: string;
-  run(): void;
-}
-let tom: Cat = {
-  name: 'Tom',
-  run: () => {
-    console.log('run');
+/*
+  interface Animal {
+    name: string;
   }
-};
-let animal: Animal = tom;
+  interface Cat {
+    name: string;
+    run(): void;
+  }
+  let tom: Cat = {
+    name: 'Tom',
+    run: () => {
+      console.log('run');
+    }
+  };
+  let animal: Animal = tom;
+ */
+
+/**
+ * 双重断言
+ * 谨慎使用，可能导致运行时错误
+ */
+/*
+  interface Cat {
+    run(): void;
+  }
+  interface Fish {
+    swim(): void;
+  }
+  function testCat(cat: Cat) {
+    return (cat as any as Fish).swim();
+  }
+  testCat({
+    run: () => {
+      console.log('run');
+    }
+  });
+  console.log(
+    testCat({
+      run: () => {
+        console.log('run');
+      }
+    })
+  );
+ */
+
+/**
+ * 类型断言 vs 类型转换
+ * 类型断言只会影响Ts编译时的类型，类型断言语句在编译结果中会被删除
+ * 类型断言不是类型转换，它不会真的影响到变量的类型
+ * 若要进行类型转换，需直接调用类型转换的方法
+ */
+/*
+  function toBoolean(sth: string): boolean {
+    return sth as any;
+    // return sth;
+  }
+  console.log(toBoolean('abc'));
+ */
+/*
+  function toBoolean(sth: string): Boolean {
+    return Boolean(sth);
+  }
+  console.log(toBoolean('123'));
+ */
