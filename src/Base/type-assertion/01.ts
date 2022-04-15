@@ -79,3 +79,26 @@
   const tom = getCatchData('tom') as Cat;
   tom.run();
  */
+
+/**
+ * 类型断言的限制
+ * 1）联合类型可以被断言为其中一个类型
+ * 2）父类可以被断言为子类
+ * 3）任何类型都可以被断言为any
+ * 4）any可以被断言为任何类型
+ * 要使得A能够被断言为B，只需要A兼容B或B兼容A即可
+ */
+interface Animal {
+  name: string;
+}
+interface Cat {
+  name: string;
+  run(): void;
+}
+let tom: Cat = {
+  name: 'Tom',
+  run: () => {
+    console.log('run');
+  }
+};
+let animal: Animal = tom;
