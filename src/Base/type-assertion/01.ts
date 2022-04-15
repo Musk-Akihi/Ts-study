@@ -34,3 +34,48 @@
     return false;
   }
  */
+
+/**
+ * 将一个父类断言为更加具体的子类
+ * 类之间有继承关系
+ * type-interface 只能使用类型断言
+ */
+/*
+  class ApiError extends Error {
+    code: number = 0;
+  }
+  class HttpError extends Error {
+    statusCode: number = 200;
+  }
+  function isApiError(error: Error) {
+    // if (typeof (error as ApiError).code === 'number') {
+    //   return true;
+    // }
+    if (error instanceof ApiError) {
+      return true;
+    }
+    return false;
+  }
+ */
+
+/**
+ * 将任何一个类型断言为any
+ * 一方面不能滥用as any，另一方面也不要完全否定它的作用，我们需要在类型的严格性和开发的便利性之间掌握平衡。
+ */
+// window.foo = 1
+// (window as any).foo = 1;
+
+/**
+ * 将any断言为一个具体的类型
+ */
+/*
+  function getCatchData(key: string): any {
+    return (globalThis as any).catch[key];
+  }
+  interface Cat {
+    name: string;
+    run(): void;
+  }
+  const tom = getCatchData('tom') as Cat;
+  tom.run();
+ */
